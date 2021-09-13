@@ -3,8 +3,9 @@ import path from "path";
 import express from "express";
 import cors from "cors";
 
+
 // local imports
-import shoutoutsRoutes from "./routes";
+import shiftLogRoutes from "./shift-log-routes";
 
 // create instance of express
 const app = express();
@@ -19,7 +20,7 @@ app.use(cors());
 const port = 3000;
 
 // add routes to application
-app.use("/", shoutoutsRoutes);
+app.use("/", shiftLogRoutes);
 
 // start server
 app.listen(port, () => {
