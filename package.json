@@ -1,0 +1,24 @@
+{
+  "name": "backend-final-gc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CognitivePrimate/gc-final-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CognitivePrimate/gc-final-backend/issues"
+  },
+  "homepage": "https://github.com/CognitivePrimate/gc-final-backend#readme",
+  "devDependencies": {
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.3"
+  }
+}
