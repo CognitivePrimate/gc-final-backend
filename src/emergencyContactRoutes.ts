@@ -8,7 +8,7 @@ const emergencyContactRoutes = express.Router();
 // get emergencyContacts
 emergencyContactRoutes.get("/emergencyContacts", (req, res) => {
     getClient().then(client => {
-        return client.db().collection<EmergencyContact>('emergencyContacts').find().toArray().then(results => {
+        return client.db().collection<EmergencyContact>('EmergencyContacts').find().toArray().then(results => {
           res.json(results); // send JSON results
         });
       }).catch(err => {
@@ -21,7 +21,7 @@ emergencyContactRoutes.get("/emergencyContacts", (req, res) => {
 emergencyContactRoutes.get("/emergencyContacts/:id", (req, res) => {
     const id = req.params.id;
     getClient().then(client => {
-        return client.db().collection<EmergencyContact>('emergencyContacts').findOne({ _id : new ObjectId(id) }).then(emergencyContact => {
+        return client.db().collection<EmergencyContact>('EmergencyContacts').findOne({ _id : new ObjectId(id) }).then(emergencyContact => {
             if (emergencyContact) {
                 res.json(emergencyContact);
             } else {
@@ -38,7 +38,7 @@ emergencyContactRoutes.get("/emergencyContacts/:id", (req, res) => {
 emergencyContactRoutes.post("/emergencyContacts", (req, res) => {
     const emergencyContact = req.body as EmergencyContact;
     getClient().then(client => {
-        return client.db().collection<EmergencyContact>('emergencyContacts').insertOne(emergencyContact).then(result => {
+        return client.db().collection<EmergencyContact>('EmergencyContacts').insertOne(emergencyContact).then(result => {
             emergencyContact._id = result.insertedId;
             res.status(201).json(emergencyContact);
         });
@@ -54,7 +54,7 @@ emergencyContactRoutes.put("/emergencyContacts/:id", (req, res) => {
     const emergencyContact = req.body as EmergencyContact;
     delete emergencyContact._id;
     getClient().then(client => {
-        return client.db().collection<EmergencyContact>('emergencyContacts').updateOne({ _id: new ObjectId(id) }, emergencyContact).then(result => {
+        return client.db().collection<EmergencyContact>('EmergencyContacts').updateOne({ _id: new ObjectId(id) }, emergencyContact).then(result => {
             if (result.modifiedCount === 0) {
                 res.status(404).json({message: "Not Found"});
             } else {
@@ -72,7 +72,7 @@ emergencyContactRoutes.put("/emergencyContacts/:id", (req, res) => {
 emergencyContactRoutes.delete("/emergencyContacts/:id", (req, res) => {
     const id = req.params.id;
     getClient().then(client => {
-        return client.db().collection<EmergencyContact>('emergencyContacts').deleteOne({ _id: new ObjectId(id) }).then(result => {
+        return client.db().collection<EmergencyContact>('EmergencyContacts').deleteOne({ _id: new ObjectId(id) }).then(result => {
             if (result.deletedCount === 0) {
                 res.status(404).json({message: "Not Found"});
             } else {
