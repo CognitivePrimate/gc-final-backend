@@ -54,7 +54,7 @@ scheduleRoutes.put("/Schedules/:id", (req, res) => {
     const Schedule = req.body as Schedule;
     delete Schedule._id;
     getClient().then(client => {
-        return client.db().collection<Schedule>('Schedules').updateOne({ _id: new ObjectId(id) }, Schedule).then(result => {
+        return client.db().collection<Schedule>('Schedules').updateOne({_id: new ObjectId(id)},{$set: {Schedule}}).then(result => {
             if (result.modifiedCount === 0) {
                 res.status(404).json({message: "Not Found"});
             } else {

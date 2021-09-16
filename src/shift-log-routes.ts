@@ -49,12 +49,32 @@ shiftLogRoutes.post("/ShiftLogs", (req, res) => {
 })
 
 // update an ShiftLog by id
+// shiftLogRoutes.put("/ShiftLogs/:id", (req, res) => {
+//     const id = req.params.id;
+//     const ShiftLog = req.body as ShiftLog;
+//     delete ShiftLog._id;
+//     getClient().then(client => {
+//         return client.db().collection<ShiftLog>('ShiftLogs').updateOne({ _id: new ObjectId(id) }, ShiftLog).then(result => {
+//             if (result.modifiedCount === 0) {
+//                 res.status(404).json({message: "Not Found"});
+//             } else {
+//                 ShiftLog._id = new ObjectId(id);
+//                 res.json(ShiftLog);
+//             }
+//         });
+//     }).catch(err => {
+//         console.error("FAIL", err);
+//         res.status(500).json({message: "Internal Server Error"});
+//     });
+// })
+
 shiftLogRoutes.put("/ShiftLogs/:id", (req, res) => {
     const id = req.params.id;
     const ShiftLog = req.body as ShiftLog;
-    delete ShiftLog._id;
+    // delete ShiftLog._id;
     getClient().then(client => {
-        return client.db().collection<ShiftLog>('ShiftLogs').updateOne({ _id: new ObjectId(id) }, ShiftLog).then(result => {
+        return client.db().collection<ShiftLog>('ShiftLogs').updateOne({_id: new ObjectId(id)},{$set: {ShiftLog}})
+        .then(result => {
             if (result.modifiedCount === 0) {
                 res.status(404).json({message: "Not Found"});
             } else {
