@@ -52,9 +52,9 @@ incidentLogRoutes.post("/IncidentReports", (req, res) => {
 incidentLogRoutes.put("/IncidentReports/:id", (req, res) => {
     const id = req.params.id;
     const IncidentReport = req.body as IncidentReport;
-    delete IncidentReport._id;
+    // delete IncidentReport._id;
     getClient().then(client => {
-        return client.db().collection<IncidentReport>('IncidentReports').updateOne({ _id: new ObjectId(id) }, IncidentReport).then(result => {
+        return client.db().collection<IncidentReport>('IncidentReports').updateOne({_id: new ObjectId(id)},{$set: {IncidentReport}}).then(result => {
             if (result.modifiedCount === 0) {
                 res.status(404).json({message: "Not Found"});
             } else {

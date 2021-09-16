@@ -3,11 +3,11 @@ import { ObjectId } from "mongodb";
 export interface ShiftLog {
     author: string;
     supervisor?: string;
-    logText: string;
-    year: Date;
-    month: Date;
-    day: Date;
-    time: Date;
+    logText?: string;
+    year?: Date;
+    month?: Date;
+    day?: Date;
+    time?: Date;
     _id?: ObjectId;
 }
 
