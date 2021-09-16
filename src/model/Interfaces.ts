@@ -36,6 +36,7 @@ export interface ScheduleRow {
 export interface Schedule {
     scheduleRows: ScheduleRow[];
     volunteersNeeded: number;
+    dateNeeded: any;
     startTime: number;
     endTime: number;
     yearCreated?: Date;
