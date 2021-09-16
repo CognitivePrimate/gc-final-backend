@@ -21,7 +21,7 @@ emergencyContactRoutes.get("/EmergencyContacts", (req, res) => {
 emergencyContactRoutes.get("/EmergencyContacts/:id", (req, res) => {
     const id = req.params.id;
     getClient().then(client => {
-        return client.db().collection<EmergencyContact>('emergencyContacts').findOne({ _id : new ObjectId(id) }).then(emergencyContact => {
+        return client.db().collection<EmergencyContact>('EmergencyContacts').findOne({ _id : new ObjectId(id) }).then(emergencyContact => {
             if (emergencyContact) {
                 res.json(emergencyContact);
             } else {

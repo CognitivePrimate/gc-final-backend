@@ -8,6 +8,7 @@ import cors from "cors";
 import shiftLogRoutes from "./shift-log-routes";
 import incidentLogRoutes from "./incidentLogRoutes"
 import scheduleRoutes from  "./scheduleRoutes";
+import emergencyContactRoutes from "./emergencyContactRoutes";
 
 // create instance of express
 const app = express();
@@ -22,9 +23,10 @@ app.use(cors());
 const port = 3000;
 
 // add routes to application ---ASK KYLE HOW TO SPECIFICALLY SET THIS UP (can't be "/" for all, can it?)
-app.use("/", shiftLogRoutes);
-app.use("/incidentReports", incidentLogRoutes);
-app.use("/schedule", scheduleRoutes);
+app.use("/", shiftLogRoutes, incidentLogRoutes, scheduleRoutes, emergencyContactRoutes);
+// app.use("/blergh", incidentLogRoutes);
+// app.use("/Schedules", scheduleRoutes);
+// app.use("/emergencyContacts", emergencyContactRoutes);
 
 
 // start server
