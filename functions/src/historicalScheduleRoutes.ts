@@ -3,10 +3,10 @@ import {getClient} from './db';
 import {ObjectId} from 'mongodb';
 import {HistoricalSchedule} from './model/Interfaces';
 
-const HistoricalScheduleRoutes = express.Router();
+const historicalScheduleRoutes = express.Router();
 
 // get HistoricalSchedules
-HistoricalScheduleRoutes.get("/HistoricalSchedules", (req, res) => {
+historicalScheduleRoutes.get("/HistoricalSchedules", (req, res) => {
     getClient().then(client => {
         return client.db().collection<HistoricalSchedule>('HistoricalSchedules').find().toArray().then(results => {
           res.json(results); // send JSON results
@@ -18,7 +18,7 @@ HistoricalScheduleRoutes.get("/HistoricalSchedules", (req, res) => {
 })
 
 // get an HistoricalSchedule by id
-HistoricalScheduleRoutes.get("/HistoricalSchedules/:id", (req, res) => {
+historicalScheduleRoutes.get("/HistoricalSchedules/:id", (req, res) => {
     const id = req.params.id;
     getClient().then(client => {
         return client.db().collection<HistoricalSchedule>('HistoricalSchedules').findOne({ _id : new ObjectId(id) }).then(HistoricalSchedule => {
@@ -35,7 +35,7 @@ HistoricalScheduleRoutes.get("/HistoricalSchedules/:id", (req, res) => {
 })
 
 // add an HistoricalSchedule
-HistoricalScheduleRoutes.post("/HistoricalSchedules", (req, res) => {
+historicalScheduleRoutes.post("/HistoricalSchedules", (req, res) => {
     const HistoricalSchedule = req.body as HistoricalSchedule;
     getClient().then(client => {
         return client.db().collection<HistoricalSchedule>('HistoricalSchedules').insertOne(HistoricalSchedule).then(result => {
@@ -49,7 +49,7 @@ HistoricalScheduleRoutes.post("/HistoricalSchedules", (req, res) => {
 })
 
 // update an HistoricalSchedule by id
-HistoricalScheduleRoutes.put("/HistoricalSchedules/:id", (req, res) => {
+historicalScheduleRoutes.put("/HistoricalSchedules/:id", (req, res) => {
     const id = req.params.id;
     const HistoricalSchedule = req.body as HistoricalSchedule;
     delete HistoricalSchedule._id;
@@ -69,7 +69,7 @@ HistoricalScheduleRoutes.put("/HistoricalSchedules/:id", (req, res) => {
 })
 
 // delete an HistoricalSchedule by id
-HistoricalScheduleRoutes.delete("/HistoricalSchedules/:id", (req, res) => {
+historicalScheduleRoutes.delete("/HistoricalSchedules/:id", (req, res) => {
     const id = req.params.id;
     getClient().then(client => {
         return client.db().collection<HistoricalSchedule>('HistoricalSchedules').deleteOne({ _id: new ObjectId(id) }).then(result => {
@@ -86,4 +86,4 @@ HistoricalScheduleRoutes.delete("/HistoricalSchedules/:id", (req, res) => {
 })
 
 
-export default HistoricalScheduleRoutes;
+export default historicalScheduleRoutes;
