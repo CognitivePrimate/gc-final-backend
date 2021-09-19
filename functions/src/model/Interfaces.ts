@@ -33,7 +33,7 @@ export interface ScheduleRow {
     _id?: ObjectId;
 }
 
-export interface Schedule {
+export interface TimeBlock {
     scheduleRows: ScheduleRow[];
     volunteersNeeded: number;
     dateNeeded: any;
@@ -44,6 +44,24 @@ export interface Schedule {
     dayCreated?: Date;
     _id?: ObjectId;
     
+}
+
+export interface Schedule {
+    timeBlocks: TimeBlock[];
+    dateNeeded: any;
+    yearCreated?: Date;
+    monthCreated?: Date;
+    dayCreated?: Date;
+    _id?: ObjectId;
+}
+
+export interface HistoricalSchedule {
+    schedule: Schedule;
+    yearCreated?: Date;
+    monthCreated?: Date;
+    dayCreated?: Date;
+    _id?: ObjectId;
+
 }
 
 export interface EmergencyContact {
