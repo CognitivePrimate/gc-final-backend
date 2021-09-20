@@ -66,7 +66,7 @@ export interface HistoricalSchedule {
 export interface EmergencyContact {
     firstName: string;
     lastName: string;
-    phoneNumber: number;
+    phoneNumber: string;
     role?: string;
     email?: string;
     _id: ObjectId;
