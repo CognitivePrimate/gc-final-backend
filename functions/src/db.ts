@@ -3,6 +3,7 @@ import * as functions from "firebase-functions";
 
 //const uri = process.env.MONGO_URI || '';
 const uri = functions.config().mongodb.uri || '';
+// const uri = "mongodb+srv://admin:shittylist@gcfinalproject-aw-br-dj.zvaga.mongodb.net/OrganizationOne?retryWrites=true&w=majority"
 
 if (!uri) {
     console.error('ERROR: Missing environment variable.');

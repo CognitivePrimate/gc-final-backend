@@ -19,8 +19,10 @@ export interface IncidentReport {
     year: Date;
     month: Date;
     day: Date;
+    hours: Date;
+    minutes: Date; 
     time: Date;
-    _id?: ObjectId;
+    _id: ObjectId;
 }
 
 export interface ScheduleRow {

@@ -7,6 +7,7 @@ const incidentLogRoutes = express.Router();
 
 // get IncidentReports
 incidentLogRoutes.get("/IncidentReports", (req, res) => {
+    console.log("in Get")
     getClient().then(client => {
         return client.db().collection<IncidentReport>('IncidentReports').find().toArray().then(results => {
           res.json(results); // send JSON results
@@ -20,8 +21,10 @@ incidentLogRoutes.get("/IncidentReports", (req, res) => {
 // get an IncidentReport by id
 incidentLogRoutes.get("/IncidentReports/:id", (req, res) => {
     const id = req.params.id;
+    (console.log("get by id", id))
     getClient().then(client => {
         return client.db().collection<IncidentReport>('IncidentReports').findOne({ _id : new ObjectId(id) }).then(IncidentReport => {
+            (console.log("in .then"))
             if (IncidentReport) {
                 res.json(IncidentReport);
             } else {
@@ -52,7 +55,7 @@ incidentLogRoutes.post("/IncidentReports", (req, res) => {
 incidentLogRoutes.put("/IncidentReports/:id", (req, res) => {
     const id = req.params.id;
     const IncidentReport = req.body as IncidentReport;
-    delete IncidentReport._id;
+    // delete IncidentReport._id;
     getClient().then(client => {
         return client.db().collection<IncidentReport>('IncidentReports').updateOne({_id: new ObjectId(id)},{$set: {IncidentReport}}).then(result => {
             if (result.modifiedCount === 0) {
