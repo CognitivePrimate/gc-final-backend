@@ -35,6 +35,7 @@ export interface ScheduleRow {
     timeIn?: number;
     timeOut?: number;
     _id?: ObjectId;
+    templated: boolean;
 }
 
 export interface TimeBlock {
@@ -53,6 +54,7 @@ export interface Schedule {
     monthCreated: Date;
     dayCreated: Date;
     _id: ObjectId;
+    templated: boolean;
 }
 
 export interface HistoricalSchedule {

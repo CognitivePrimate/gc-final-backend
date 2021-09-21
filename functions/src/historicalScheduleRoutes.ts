@@ -52,7 +52,7 @@ historicalScheduleRoutes.post("/HistoricalSchedules", (req, res) => {
 historicalScheduleRoutes.put("/HistoricalSchedules/:id", (req, res) => {
     const id = req.params.id;
     const HistoricalSchedule = req.body as HistoricalSchedule;
-    delete HistoricalSchedule._id;
+    // delete HistoricalSchedule._id;
     getClient().then(client => {
         return client.db().collection<HistoricalSchedule>('HistoricalSchedules').updateOne({_id: new ObjectId(id)},{$set: {HistoricalSchedule}}).then(result => {
             if (result.modifiedCount === 0) {
