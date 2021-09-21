@@ -71,9 +71,9 @@ shiftLogRoutes.post("/ShiftLogs", (req, res) => {
 shiftLogRoutes.put("/ShiftLogs/:id", (req, res) => {
     const id = req.params.id;
     const ShiftLog = req.body as ShiftLog;
-    delete ShiftLog._id;
+    // delete ShiftLog._id;
     getClient().then(client => {
-        return client.db().collection<ShiftLog>('ShiftLogs').updateOne({_id: new ObjectId(id)},{$set: {ShiftLog}})
+        return client.db().collection<ShiftLog>('ShiftLogs').updateOne({_id: new ObjectId(id)},{$set: ShiftLog})
         .then(result => {
             if (result.modifiedCount === 0) {
                 res.status(404).json({message: "Not Found"});
