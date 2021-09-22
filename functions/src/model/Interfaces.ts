@@ -10,7 +10,7 @@ export interface ShiftLog {
     hours: Date;
     minutes?: Date
     time?: Date;
-    _id: ObjectId;
+    _id?: ObjectId;
 }
 
 export interface IncidentReport {
@@ -24,7 +24,7 @@ export interface IncidentReport {
     hours: Date;
     minutes: Date; 
     time: Date;
-    _id: ObjectId;
+    _id?: ObjectId;
 }
 
 export interface ScheduleRow {
@@ -53,7 +53,7 @@ export interface Schedule {
     yearCreated: Date;
     monthCreated: Date;
     dayCreated: Date;
-    _id: ObjectId;
+    _id?: ObjectId;
     templated: boolean;
 }
 
@@ -62,7 +62,7 @@ export interface HistoricalSchedule {
     yearCreated: Date;
     monthCreated: Date;
     dayCreated: Date;
-    _id: ObjectId;
+    _id?: ObjectId;
 }
 
 export interface EmergencyContact {
@@ -71,5 +71,5 @@ export interface EmergencyContact {
     phoneNumber: string;
     role?: string;
     email?: string;
-    _id: ObjectId;
+    _id?: ObjectId;
 }

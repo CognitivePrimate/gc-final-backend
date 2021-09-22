@@ -52,7 +52,7 @@ emergencyContactRoutes.post("/EmergencyContacts", (req, res) => {
 emergencyContactRoutes.put("/EmergencyContacts/:id", (req, res) => {
     const id = req.params.id;
     const emergencyContact = req.body as EmergencyContact;
-    // delete emergencyContact._id;
+    delete emergencyContact._id;
     getClient().then(client => {
         return client.db().collection<EmergencyContact>('EmergencyContacts').updateOne({_id: new ObjectId(id)},{$set: emergencyContact}).then(result => {
             if (result.modifiedCount === 0) {
