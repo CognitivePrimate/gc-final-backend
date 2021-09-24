@@ -53,8 +53,11 @@ emergencyContactRoutes.put("/EmergencyContacts/:id", (req, res) => {
     const id = req.params.id;
     const emergencyContact = req.body as EmergencyContact;
     delete emergencyContact._id;
+    console.log(emergencyContact);
     getClient().then(client => {
+        console.log(emergencyContact);
         return client.db().collection<EmergencyContact>('EmergencyContacts').updateOne({_id: new ObjectId(id)},{$set: emergencyContact}).then(result => {
+            console.log(result);
             if (result.modifiedCount === 0) {
                 res.status(404).json({message: "Not Found"});
             } else {
